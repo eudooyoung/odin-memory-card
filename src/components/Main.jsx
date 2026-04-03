@@ -1,3 +1,4 @@
+import Container from "./Container.jsx";
 import "../styles/Main.css";
 
 export default function Main() {
