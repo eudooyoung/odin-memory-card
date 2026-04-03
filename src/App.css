@@ -14,7 +14,7 @@ body {
 
 #root {
   display: grid;
-  grid-template-rows: 5rem 45rem 5rem;
+  grid-template-rows: 5rem auto 5rem;
   row-gap: 2rem;
 }
 
