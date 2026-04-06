@@ -7,7 +7,7 @@ export default function Main() {
   const totalCard = 9;
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [memory, setMemory] = useState(new Set());
+  const [memory, setMemory] = useState([]);
 
   const getRandomIds = () => {
     const idSet = new Set();
@@ -42,8 +42,15 @@ export default function Main() {
   };
 
   const clickCardHandler = (e) => {
-    const clickedCardId = e.target.closest(".card").id;
+    const cardId = e.target.closest(".card").id;
     reorderCards();
+    if (!memory.includes(cardId)) {
+      setScore(score + 1);
+      setMemory([cardId, ...memory]);
+    } else {
+      setScore(0);
+      setMemory([]);
+    }
   };
 
   useEffect(() => {
