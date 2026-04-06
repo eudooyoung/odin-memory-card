@@ -7,24 +7,33 @@ export default function Main() {
   const cardTotal = 9;
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [memory, setMemory] = useState([]);
+  const [memory, setMemory] = useState(new Set());
 
   const getRandomIds = () => {
-    const randomIds = [];
+    const idSet = new Set();
     for (let i = 0; i < cardTotal; i++) {
       let randomId = 0;
       do {
         randomId = Math.floor(Math.random() * 1024) + 1;
-      } while (randomIds.includes(randomId));
-      randomIds.push(randomId);
+      } while (idSet.has(randomId));
+      idSet.add(randomId);
     }
-    return randomIds;
+    return [...idSet];
   };
 
   const getFetchUrls = (ids) => {
     return ids.map((id) => {
       return `https://pokeapi.co/api/v2/pokemon/${id}/`;
     });
+  };
+
+  const reorderCards = () => {};
+
+  const clickCardHandler = (e) => {
+    const clickedCardId = e.target.closest(".card").id;
+    if (memory.has(clickCardHandler)) {
+      setScore(0);
+    }
   };
 
   useEffect(() => {
@@ -55,7 +64,11 @@ export default function Main() {
 
   return (
     <main>
-      <Cards className="card-container" cards={cards} />
+      <Cards
+        className="card-container"
+        cards={cards}
+        onClick={clickCardHandler}
+      />
       <Score className="score-container" score={score} />
     </main>
   );
