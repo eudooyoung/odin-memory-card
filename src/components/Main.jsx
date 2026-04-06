@@ -1,6 +1,7 @@
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
 import Cards from "./Cards.jsx";
+import Score from "./Score.jsx";
 
 export default function Main() {
   const cardTotal = 9;
@@ -53,7 +54,7 @@ export default function Main() {
   return (
     <main>
       <Cards className="card-container" cards={cards} />
-      <div className="score-container"></div>
+      <Score className="score-container" />
     </main>
   );
 }
