@@ -64,6 +64,13 @@ export default function Main() {
     reorderCards();
   };
 
+  const clickReplayButtonHandler = () => {
+    setScore(0);
+    setBestScore(0);
+    setMemory([]);
+    reorderCards();
+  }
+
   useEffect(() => {
     let ignore = false;
     const newCards = [];
@@ -97,7 +104,7 @@ export default function Main() {
         cards={cards}
         onClick={!isComplete && clickCardHandler}
       />
-      {isComplete && <Result />}
+      {isComplete && <Result onClick={clickReplayButtonHandler} />}
       <Score
         className="score-container"
         score={score}
