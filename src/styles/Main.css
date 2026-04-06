@@ -1,4 +1,15 @@
 main {
   display: grid;
   grid-template-rows: auto 100px;
+  grid-template-columns: auto 200px;
+  row-gap: 1.5rem;
+}
+
+.card-container {
+  grid-column: 1 / 3;
+}
+
+.score-container {
+  grid-column: 2 / 3;
+  text-align: left;
 }

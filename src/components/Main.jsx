@@ -6,6 +6,8 @@ import Score from "./Score.jsx";
 export default function Main() {
   const cardTotal = 9;
   const [cards, setCards] = useState([]);
+  const [score, setScore] = useState(0);
+  const [memory, setMemory] = useState([]);
 
   const getRandomIds = () => {
     const randomIds = [];
@@ -54,7 +56,7 @@ export default function Main() {
   return (
     <main>
       <Cards className="card-container" cards={cards} />
-      <Score className="score-container" />
+      <Score className="score-container" score={score} />
     </main>
   );
 }
