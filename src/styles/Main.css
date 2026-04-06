@@ -9,6 +9,11 @@ main {
   grid-column: 1 / 4;
 }
 
+.menu-container {
+  grid-column: 1 / 2;
+  text-align: right;
+}
+
 .result-container {
   grid-column: 2 / 3;
 }

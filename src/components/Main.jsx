@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
 import Result from "./Result.jsx";
+import Menu from "./Menu.jsx";
 
 export default function Main() {
   const [cards, setCards] = useState([]);
@@ -11,7 +12,8 @@ export default function Main() {
   const [memory, setMemory] = useState([]);
 
   const totalCard = 9;
-  const isComplete = totalCard === bestScore;
+  // const isComplete = totalCard === bestScore;
+  const isComplete = true;
 
   const getRandomIds = () => {
     const idSet = new Set();
@@ -46,6 +48,9 @@ export default function Main() {
   };
 
   const clickCardHandler = (e) => {
+    if (isComplete) {
+      return;
+    }
     const cardId = e.target.closest(".card").id;
     if (!memory.includes(cardId)) {
       const newScore = score + 1;
@@ -64,12 +69,16 @@ export default function Main() {
     reorderCards();
   };
 
+  const clickReloadButtonHandler = () => {
+    window.location.reload();
+  };
+
   const clickReplayButtonHandler = () => {
     setScore(0);
     setBestScore(0);
     setMemory([]);
     reorderCards();
-  }
+  };
 
   useEffect(() => {
     let ignore = false;
@@ -102,8 +111,9 @@ export default function Main() {
       <Cards
         className="card-container"
         cards={cards}
-        onClick={!isComplete && clickCardHandler}
+        onClick={clickCardHandler}
       />
+      <Menu onClick={clickReloadButtonHandler} />
       {isComplete && <Result onClick={clickReplayButtonHandler} />}
       <Score
         className="score-container"
