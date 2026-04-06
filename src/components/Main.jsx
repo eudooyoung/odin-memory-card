@@ -1,44 +1,58 @@
 import "../styles/Main.css";
-import Card from "./Card.jsx";
 import { useEffect, useState } from "react";
+import Cards from "./Cards.jsx";
 
 export default function Main() {
+  const cardTotal = 9;
   const [cards, setCards] = useState([]);
+
+  const getRandomIds = () => {
+    const randomIds = [];
+    for (let i = 0; i < cardTotal; i++) {
+      let randomId = 0;
+      do {
+        randomId = Math.floor(Math.random() * 1024) + 1;
+      } while (randomIds.includes(randomId));
+      randomIds.push(randomId);
+    }
+    return randomIds;
+  };
+
+  const getFetchUrls = (ids) => {
+    return ids.map((id) => {
+      return `https://pokeapi.co/api/v2/pokemon/${id}/`;
+    });
+  };
 
   useEffect(() => {
     let ignore = false;
     const newCards = [];
-    for (let i = 0; i < 9; i++) {
-      const randomId = Math.floor(Math.random() * 1024) + 1;
-      fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}/`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (!ignore) {
-            const pokemon = {
-              id: data.id,
-              name: data.name,
-              imgUrl: data.sprites.other["official-artwork"].front_default,
-            };
-            newCards.push(pokemon);
-            if (i === 8) {
-              setCards(newCards);
-            }
-          }
-        });
-    }
+    const randomIds = getRandomIds();
+    const fetchUrls = getFetchUrls(randomIds);
+
+    Promise.all(
+      fetchUrls.map((url) => fetch(url).then((response) => response.json())),
+    ).then((dataset) => {
+      dataset.forEach((data) => {
+        const pokemon = {
+          id: data.id,
+          name: data.name,
+          imgUrl: data.sprites.other["official-artwork"].front_default,
+        };
+        newCards.push(pokemon);
+      });
+      if (!ignore) {
+        setCards(newCards);
+      }
+    });
     return () => {
       ignore = true;
     };
   }, []);
 
-  console.log(cards);
   return (
     <main>
-      <div className="card-container">
-        {cards.map((card) => {
-          return <Card key={card.id} card={card} />;
-        })}
-      </div>
+      <Cards className="card-container" cards={cards} />
       <div className="score-container"></div>
     </main>
   );
