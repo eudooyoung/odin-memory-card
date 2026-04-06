@@ -2,12 +2,16 @@ import "../styles/Main.css";
 import { useEffect, useState } from "react";
 import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
+import Result from "./Result.jsx";
 
 export default function Main() {
-  const totalCard = 9;
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [memory, setMemory] = useState([]);
+
+  const totalCard = 9;
+  const isComplete = totalCard === bestScore;
 
   const getRandomIds = () => {
     const idSet = new Set();
@@ -43,14 +47,21 @@ export default function Main() {
 
   const clickCardHandler = (e) => {
     const cardId = e.target.closest(".card").id;
-    reorderCards();
     if (!memory.includes(cardId)) {
-      setScore(score + 1);
+      const newScore = score + 1;
+      const newBestScore = Math.max(newScore, bestScore);
+      setScore(newScore);
+      setBestScore(newBestScore);
+      if (newScore === totalCard) {
+        return;
+      }
       setMemory([cardId, ...memory]);
     } else {
       setScore(0);
       setMemory([]);
     }
+
+    reorderCards();
   };
 
   useEffect(() => {
@@ -84,9 +95,15 @@ export default function Main() {
       <Cards
         className="card-container"
         cards={cards}
-        onClick={clickCardHandler}
+        onClick={!isComplete && clickCardHandler}
       />
-      <Score className="score-container" score={score} />
+      {isComplete && <Result />}
+      <Score
+        className="score-container"
+        score={score}
+        bestScore={bestScore}
+        isComplete={isComplete}
+      />
     </main>
   );
 }

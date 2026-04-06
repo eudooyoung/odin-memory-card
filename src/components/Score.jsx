@@ -1,6 +1,6 @@
 import "../styles/Score.css";
 
-export default function Score({ className, score }) {
+export default function Score({ className, score, bestScore, isComplete }) {
   return (
     <div className={className}>
       <div>
@@ -9,12 +9,13 @@ export default function Score({ className, score }) {
       </div>
       <div>
         <span>Best Score: </span>
-        <span></span>
+        <span>{bestScore}</span>
       </div>
-      <div>
-        <span>Result</span>
-        <span></span>
-      </div>
+      {isComplete && (
+        <div>
+          <span>Complete!</span>
+        </div>
+      )}
     </div>
   );
 }
