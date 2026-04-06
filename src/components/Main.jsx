@@ -4,14 +4,14 @@ import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
 
 export default function Main() {
-  const cardTotal = 9;
+  const totalCard = 9;
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [memory, setMemory] = useState(new Set());
 
   const getRandomIds = () => {
     const idSet = new Set();
-    for (let i = 0; i < cardTotal; i++) {
+    for (let i = 0; i < totalCard; i++) {
       let randomId = 0;
       do {
         randomId = Math.floor(Math.random() * 1024) + 1;
@@ -27,13 +27,23 @@ export default function Main() {
     });
   };
 
-  const reorderCards = () => {};
+  const reorderCards = () => {
+    const idxSet = new Set();
+    const newCards = [];
+    for (let i = 0; i < totalCard; i++) {
+      let randomIdx = -1;
+      do {
+        randomIdx = Math.floor(Math.random() * totalCard);
+      } while (idxSet.has(randomIdx));
+      newCards.push(cards[randomIdx]);
+      idxSet.add(randomIdx);
+    }
+    setCards(newCards);
+  };
 
   const clickCardHandler = (e) => {
     const clickedCardId = e.target.closest(".card").id;
-    if (memory.has(clickCardHandler)) {
-      setScore(0);
-    }
+    reorderCards();
   };
 
   useEffect(() => {
