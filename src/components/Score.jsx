@@ -11,11 +11,7 @@ export default function Score({ className, score, bestScore, isComplete }) {
         <span>Best Score: </span>
         <span>{bestScore}</span>
       </div>
-      {isComplete && (
-        <div>
-          <span>Complete!</span>
-        </div>
-      )}
+  
     </div>
   );
 }

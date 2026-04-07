@@ -17,3 +17,17 @@ img {
 .pokemon-name {
   place-self: center;
 }
+
+/* transition */
+.card {
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+  transition-property: transform;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+}

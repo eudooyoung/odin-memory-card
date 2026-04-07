@@ -1,3 +1,4 @@
+import "../styles/Button.css"
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
 import Loading from "./Loading.jsx";
