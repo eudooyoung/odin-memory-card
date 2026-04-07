@@ -52,4 +52,12 @@ main {
 
 button {
   padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 3px black;
+}
+
+button:hover {
+  cursor: pointer;
 }
