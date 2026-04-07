@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../styles/Card.css";
+import Loading from "./Loading";
 
 export default function Card({ card, onClick }) {
   const [isComplete, setIsComplete] = useState(false);
-
   return (
     <div className="card" id={card.id} onClick={onClick}>
       <div className="image-wrapper">
@@ -13,7 +13,7 @@ export default function Card({ card, onClick }) {
           onLoad={() => setIsComplete(true)}
         />
       </div>
-      {!isComplete && <div className="loading">Loading...</div>}
+      {!isComplete && <Loading />}
       <span className="pokemon-name">
         {card.name.at(0).toUpperCase() + card.name.slice(1)}
       </span>

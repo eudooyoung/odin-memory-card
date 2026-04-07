@@ -1,5 +1,6 @@
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
+import Loading from "./Loading.jsx";
 import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
 import Result from "./Result.jsx";
@@ -10,6 +11,7 @@ export default function Main() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [memory, setMemory] = useState([]);
+  const [hasFetchedAll, setHasFetchedAll] = useState(false);
 
   const totalCard = 9;
   // const isComplete = totalCard === bestScore;
@@ -99,6 +101,7 @@ export default function Main() {
       });
       if (!ignore) {
         setCards(newCards);
+        setHasFetchedAll(true);
       }
     });
     return () => {
@@ -121,6 +124,7 @@ export default function Main() {
         bestScore={bestScore}
         isComplete={isComplete}
       />
+      {!hasFetchedAll && <Loading />}
     </main>
   );
 }

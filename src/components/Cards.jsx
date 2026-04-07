@@ -1,4 +1,3 @@
-import "../styles/Cards.css";
 import Card from "./Card";
 
 export default function Cards({ cards, className, onClick }) {
