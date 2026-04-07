@@ -1,12 +1,14 @@
 main {
   display: grid;
   grid-template-rows: auto 100px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-items: center;
   row-gap: 1.5rem;
 }
 
 .card-container {
   grid-column: 1 / 4;
+  max-width: 90%;
 }
 
 .menu-container {

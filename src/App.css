@@ -8,14 +8,14 @@
 
 body {
   text-align: center;
-  max-width: calc(1980px * 0.75);
+  max-width: calc(1980px * 0.5);
   margin: 0 auto;
 }
 
 #root {
   display: grid;
   grid-template-rows: 5rem auto 5rem;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
 }
 
 header {
