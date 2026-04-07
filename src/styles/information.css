@@ -1,0 +1,25 @@
+.information {
+  /* max-width: 100%; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.menu-container {
+  display: grid;
+  place-items: center;
+}
+
+.result-container {
+  display: grid;
+  place-items: center;
+}
+
+.score-container {
+  display: grid;
+  align-items: center;
+  justify-items: start;
+}
+
+.congratulation {
+  font-weight: bold;
+}

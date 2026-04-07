@@ -1,4 +1,5 @@
-import "../styles/Button.css"
+import "../styles/information.css";
+import "../styles/Button.css";
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
 import Loading from "./Loading.jsx";
@@ -72,10 +73,6 @@ export default function Main() {
     reorderCards();
   };
 
-  const clickReloadButtonHandler = () => {
-    window.location.reload();
-  };
-
   const clickReplayButtonHandler = () => {
     setScore(0);
     setBestScore(0);
@@ -112,18 +109,20 @@ export default function Main() {
 
   return (
     <main>
+      <div className="information">
+        <Menu />
+        {isComplete && <Result onClick={clickReplayButtonHandler} />}
+        <Score
+          className="score-container"
+          score={score}
+          bestScore={bestScore}
+          isComplete={isComplete}
+        />
+      </div>
       <Cards
         className="card-container"
         cards={cards}
         onClick={clickCardHandler}
-      />
-      <Menu onClick={clickReloadButtonHandler} />
-      {isComplete && <Result onClick={clickReplayButtonHandler} />}
-      <Score
-        className="score-container"
-        score={score}
-        bestScore={bestScore}
-        isComplete={isComplete}
       />
       {!hasFetchedAll && <Loading />}
     </main>
