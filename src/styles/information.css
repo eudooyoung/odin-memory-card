@@ -9,6 +9,7 @@
 }
 
 .menu-container {
+  grid-column: 1 / 2;
   place-items: center;
 }
 
@@ -17,6 +18,7 @@
 }
 
 .score-container {
+  grid-column: 3 / 4;
   justify-items: start;
   justify-content: center;
 }

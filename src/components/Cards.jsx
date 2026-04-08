@@ -5,20 +5,25 @@ export default function Cards({
   className,
   onClick,
   totalCard,
-  hasFetchedAll,
 }) {
-  const placeholderArr = [];
-  for (let i = 0; i < totalCard; i++) {
-    placeholderArr.push(<Card isPlaceholder={true} key={i} />);
+  if (cards.length === 0) {
+    for (let i = 0; i < totalCard; i++) {
+      cards.push({ id: i, isPlaceholder: true });
+    }
   }
 
   return (
     <div className={className}>
-      {hasFetchedAll &&
-        cards.map((card) => {
-          return <Card key={card.id} card={card} onClick={onClick} />;
-        })}
-      {!hasFetchedAll && placeholderArr}
+      {cards.map((card) => {
+        return (
+          <Card
+            key={card.id}
+            card={card}
+            onClick={onClick}
+            isPlaceholder={card.isPlaceholder}
+          />
+        );
+      })}
     </div>
   );
 }

@@ -12,11 +12,10 @@ export default function Main() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [memory, setMemory] = useState([]);
-  const [hasFetchedAll, setHasFetchedAll] = useState(false);
 
   const totalCard = 9;
-  // const isComplete = totalCard === bestScore;
-  const isComplete = true;
+  const isComplete = totalCard === bestScore;
+  // const isComplete = true;
 
   const getRandomIds = () => {
     const idSet = new Set();
@@ -98,7 +97,6 @@ export default function Main() {
       });
       if (!ignore) {
         setCards(newCards);
-        setHasFetchedAll(true);
       }
     });
     return () => {
@@ -122,7 +120,6 @@ export default function Main() {
         cards={cards}
         onClick={clickCardHandler}
         totalCard={totalCard}
-        hasFetchedAll={hasFetchedAll}
       />
     </main>
   );
