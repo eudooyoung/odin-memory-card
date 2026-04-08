@@ -1,7 +1,7 @@
 # Odin Memory Card
 
 ## Deploy
-[App]
+[App](https://odin-memory-card-eudooyoung.netlify.app/)
 
 ## References
 - PokéApi from [PokéApi](https://pokeapi.co/)
