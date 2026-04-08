@@ -2,7 +2,6 @@ import "../styles/information.css";
 import "../styles/Button.css";
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
-import Loading from "./Loading.jsx";
 import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
 import Result from "./Result.jsx";
@@ -116,15 +115,15 @@ export default function Main() {
           className="score-container"
           score={score}
           bestScore={bestScore}
-          isComplete={isComplete}
         />
       </div>
       <Cards
         className="card-container"
         cards={cards}
         onClick={clickCardHandler}
+        totalCard={totalCard}
+        hasFetchedAll={hasFetchedAll}
       />
-      {!hasFetchedAll && <Loading />}
     </main>
   );
 }

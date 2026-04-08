@@ -1,6 +1,4 @@
-import "../styles/Score.css";
-
-export default function Score({ className, score, bestScore, isComplete }) {
+export default function Score({ className, score, bestScore }) {
   return (
     <div className={className}>
       <div className="score">

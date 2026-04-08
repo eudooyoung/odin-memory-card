@@ -1,5 +1,3 @@
-import "../styles/Result.css";
-
 export default function Result({ onClick }) {
   return (
     <div className="result-container">

@@ -1,4 +1,4 @@
-export default function Menu({ onClick }) {
+export default function Menu() {
     const clickReloadButtonHandler = () => {
     window.location.reload();
   };

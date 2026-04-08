@@ -4,15 +4,7 @@ main {
   row-gap: 1.5rem;
 }
 
-.loading {
-  margin: auto;
-  grid-row: 2 / 3;
-  grid-column: 1 / 4;
-  max-width: 90%;
-}
-
 .card-container {
-  grid-row: 2 / 3;
   max-width: 90%;
   justify-self: center;
 
