@@ -6,7 +6,7 @@ export default function Footer() {
       <span>
         Pokémon data by{" "}
         <a href="https://pokeapi.co/" target="_blank" rel="noreferer">
-          PokéAPI
+          PokéApi
         </a>{" "}
         ·
       </span>

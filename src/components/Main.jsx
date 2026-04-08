@@ -15,7 +15,6 @@ export default function Main() {
 
   const totalCard = 9;
   const isComplete = totalCard === bestScore;
-  // const isComplete = true;
 
   const getRandomIds = () => {
     const idSet = new Set();
