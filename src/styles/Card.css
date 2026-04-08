@@ -10,10 +10,39 @@
   cursor: pointer;
 }
 
-img {
+.image-wrapper {
   max-width: 180px;
+  min-height: 180px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 .pokemon-name {
   place-self: center;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+}
+
+.card.placeholder {
+  min-height: calc(180px + 2rem);
+}
+
+/* transition */
+.card {
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+  transition-property: transform;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
 }

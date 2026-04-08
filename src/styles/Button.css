@@ -1,0 +1,34 @@
+button {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 3px black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* transition */
+button {
+  transition-property: background-color color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+button.reload:hover {
+  transition-property: background-color color;
+  background-color: #000;
+  color: #fff;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+button.replay:hover {
+  transition-property: background-color color;
+  background-color: #f00;
+  color: #fff;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}

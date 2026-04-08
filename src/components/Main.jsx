@@ -1,6 +1,7 @@
+import "../styles/information.css";
+import "../styles/Button.css";
 import "../styles/Main.css";
 import { useEffect, useState } from "react";
-import Loading from "./Loading.jsx";
 import Cards from "./Cards.jsx";
 import Score from "./Score.jsx";
 import Result from "./Result.jsx";
@@ -11,11 +12,10 @@ export default function Main() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [memory, setMemory] = useState([]);
-  const [hasFetchedAll, setHasFetchedAll] = useState(false);
 
   const totalCard = 9;
-  // const isComplete = totalCard === bestScore;
-  const isComplete = true;
+  const isComplete = totalCard === bestScore;
+  // const isComplete = true;
 
   const getRandomIds = () => {
     const idSet = new Set();
@@ -71,10 +71,6 @@ export default function Main() {
     reorderCards();
   };
 
-  const clickReloadButtonHandler = () => {
-    window.location.reload();
-  };
-
   const clickReplayButtonHandler = () => {
     setScore(0);
     setBestScore(0);
@@ -101,7 +97,6 @@ export default function Main() {
       });
       if (!ignore) {
         setCards(newCards);
-        setHasFetchedAll(true);
       }
     });
     return () => {
@@ -111,20 +106,21 @@ export default function Main() {
 
   return (
     <main>
+      <div className="information">
+        <Menu />
+        {isComplete && <Result onClick={clickReplayButtonHandler} />}
+        <Score
+          className="score-container"
+          score={score}
+          bestScore={bestScore}
+        />
+      </div>
       <Cards
         className="card-container"
         cards={cards}
         onClick={clickCardHandler}
+        totalCard={totalCard}
       />
-      <Menu onClick={clickReloadButtonHandler} />
-      {isComplete && <Result onClick={clickReplayButtonHandler} />}
-      <Score
-        className="score-container"
-        score={score}
-        bestScore={bestScore}
-        isComplete={isComplete}
-      />
-      {!hasFetchedAll && <Loading />}
     </main>
   );
 }
