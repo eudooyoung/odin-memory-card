@@ -1,25 +1,50 @@
 .information {
-  /* max-width: 100%; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.information > * {
+  display: grid;
 }
 
 .menu-container {
-  display: grid;
   place-items: center;
 }
 
 .result-container {
-  display: grid;
   place-items: center;
 }
 
 .score-container {
-  display: grid;
-  align-items: center;
   justify-items: start;
+  justify-content: center;
+}
+
+.score {
+  align-self: end;
+}
+
+.score.best {
+  align-self: start;
 }
 
 .congratulation {
   font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .information {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 4rem);
+    row-gap: 1rem;
+  }
+
+  .score-container {
+    grid-row: 1 / 2;
+  }
+
+  .result-container {
+    grid-row: 2 / 3;
+  }
 }

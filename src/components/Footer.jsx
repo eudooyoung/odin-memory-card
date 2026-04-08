@@ -18,6 +18,7 @@ export default function Footer() {
           href="https://github.com/eudooyoung/odin-memory-card.git"
           target="_blank"
           rel="noreferer"
+          aria-label="Link to github repository"
         >
           <i className="devicon-github-original"></i>
         </a>
